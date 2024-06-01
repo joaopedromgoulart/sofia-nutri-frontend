@@ -4,6 +4,8 @@ import { Container } from "@mui/material";
 import { Grid } from "@mui/material";
 
 import Typography from '@mui/material/Typography';
+import Collapse from '@mui/material/Collapse';
+
 
 const specializations = {
   saudeDaMulher: {
@@ -68,9 +70,7 @@ const SpecializationSection = () => {
   const [selectedSpecialization, setSelectedSpecialization] = React.useState(null);
 
   const handleSpecializationSelection = (event: React.MouseEvent) => {
-    console.log('clicked')
     if (selectedSpecialization != null && selectedSpecialization === specializations[event.target.id].about) {
-      console.log('inside')
       setSelectedSpecialization(null);
       return;
     }
@@ -90,7 +90,9 @@ const SpecializationSection = () => {
           ))
         }
       </Grid>
-      {selectedSpecialization && <SpecializationDetails text={selectedSpecialization} />}
+      <Collapse in={selectedSpecialization != null}  collapsedSize={0}>
+        <SpecializationDetails text={selectedSpecialization} />
+      </Collapse>
   </React.Fragment>
   )
 }
@@ -106,6 +108,14 @@ const BlogIntroductionSection = () => {
     </div>
   )
 
+}
+
+const FooterSection = () => {
+  return (
+    <Box id="footer">
+      <Typography variant="h4">MY FUKING FOOTER</Typography>
+    </Box>
+  )
 }
 
 export default function Home() {
@@ -127,11 +137,9 @@ export default function Home() {
           <Typography variant="h4">Feedbacks</Typography>
           <Typography variant="h6" paddingInline={"15%"}>Fui muito bem atendido pela Dra. Sofia, que elaborou um plano alimentar personalizado e viável. Recomendo seu serviço pela atenção e profissionalismo exemplares..</Typography>
         </Box>
-
       </div>
-      <Box id="footer">
-          <Typography variant="h4">MY FUKING FOOTER</Typography>
-      </Box>
+      <FooterSection />
+
     </Box>
   );
 }
