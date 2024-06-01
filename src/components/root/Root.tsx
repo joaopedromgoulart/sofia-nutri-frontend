@@ -7,12 +7,13 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import { Outlet } from "react-router-dom";
 import { CssBaseline } from '@mui/material';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 
 const ButtonAppBar = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" id="header">
+      <AppBar position="fixed">
         <Toolbar>
           <IconButton
             size="small"
@@ -27,7 +28,7 @@ const ButtonAppBar = () => {
             Sofia Foresti
           </Typography>
           <Button color="inherit">
-            <Typography variant='h5'>Blog</Typography>
+            <Typography variant='h5' gutterBottom >Blog</Typography>
           </Button>
         </Toolbar>
       </AppBar>
@@ -35,13 +36,27 @@ const ButtonAppBar = () => {
   );
 }
 
+const theme = createTheme({
+  palette: {
+    mode: 'light',
+    primary: {
+      main: '#065750',
+    },
+    secondary: {
+      main: '#fdf2eb',
+    },
+  },
+  shape: {
+    borderRadius: 15,
+  },
+});
 
 export default function Root() {
   return (
-    <React.Fragment>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <ButtonAppBar />
       <Outlet />
-    </React.Fragment>
+    </ThemeProvider>
   );
 }
