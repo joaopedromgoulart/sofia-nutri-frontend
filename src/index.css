@@ -104,6 +104,68 @@ button:focus-visible {
 }
 
 .home-page {
-  height: 400px;
+  padding: 0;
+  margin: 0;
+  max-width: 1440px;
+  min-width: 500px;
+  height: 100%;
   border: #065750;
+  background-color: #FDF2EB;
+}
+
+#about-section {
+  padding-block: 80px;
+  padding-inline: 20px;
+  text-align: center;
+  color: #065750;
+}
+
+#appointment-button {
+  background-color: #065750;
+  color: #FDF2EB;
+  border-radius: 15px;
+}
+
+#specialization-section {
+  padding: 40px;
+  padding-inline: 20px;
+  background-image: url('./src/assets/home/transition1.svg') ;
+}
+
+#specialization-section h1 {
+  margin: 0;
+}
+
+#blog-header {
+  padding-top: 0px;
+  padding-inline: 20px;
+  text-align: center;
+  background-color: #065750;
+  color: #FDF2EB;
+}
+
+#detail {
+  max-width: 1000px;
+  padding-top: 80px;
+  background-color: #FDF2EB;
+}
+
+.tipo-atendimento {
+  max-width: 100%;
+  min-width: 200px;
+}
+
+#blog-transition {
+  padding-inline: 20px;
+  background-image: url('./src/assets/home/transition2.svg');
+}
+
+#green-section{
+  overflow: hidden;
+  background-image: url('./src/assets/home/green-food.svg');
+}
+
+#footer{
+  overflow: visible;
+  background-image: url('./src/assets/home/footer.svg');
 }
