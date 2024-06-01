@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import "./index.css";
 import Root from "./components/root/Root";
-import Home from "./routes/home/intex.tsx";
+import Home from "./routes/home/index.tsx";
 
 const router = createBrowserRouter([
   {

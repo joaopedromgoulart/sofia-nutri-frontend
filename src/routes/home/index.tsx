@@ -5,6 +5,21 @@ import { Grid } from "@mui/material";
 
 import Typography from '@mui/material/Typography';
 
+const specializations = {
+  saudeDaMulher: {
+    image: "./src/assets/home/saude-mulher.svg",
+    about: "Some text about saude da mulher"
+  },
+  NutricaoEsportiva: {
+    image: "./src/assets/home/nutricao-esportiva.svg",
+    about: "Texto sobre nutricao esportiva"
+  },
+  Longevidade: {
+    image: "./src/assets/home/longevidade.svg",
+    about: "Texto sobre Longevidade"
+  }
+}
+
 const AboutSection = () => {
   return (
   <Grid id="about-section" container spacing={5} direction={"row"} >
@@ -20,20 +35,63 @@ const AboutSection = () => {
   )
 }
 
+interface SpecializationDetailsProps {
+  text: string
+}
+
+const SpecializationDetails = ({ text }: SpecializationDetailsProps) => {
+  if ( text ) {
+    return (
+      <Container id="specialization-details">
+        <Typography id="specialization-description" variant="h6">{text}</Typography>
+      </Container>
+    )
+  }
+}
+
+interface GridIconProps {
+  specializationName: string;
+  imagePath: string;
+  handleClick?: (event: React.MouseEvent) => void;
+}
+
+const GridIcon = ( {imagePath, specializationName, handleClick}: GridIconProps) => {
+  return (
+    <Grid item xs={3} className="grid-icon" key={ specializationName }>
+      <img id={ specializationName } className="tipo-atendimento" src={imagePath}  onClick={handleClick} />
+    </Grid>
+  )
+}
 
 const SpecializationSection = () => {
+
+  const [selectedSpecialization, setSelectedSpecialization] = React.useState(null);
+
+  const handleSpecializationSelection = (event: React.MouseEvent) => {
+    console.log('clicked')
+    if (selectedSpecialization != null && selectedSpecialization === specializations[event.target.id].about) {
+      console.log('inside')
+      setSelectedSpecialization(null);
+      return;
+    }
+    
+    setSelectedSpecialization(specializations[event.target.id].about);
+  }
+
   return (
-  <Grid id="specialization-section" justifyContent="space-evenly" alignItems="stretch" container spacing={2} direction={"row"}>
-    <Grid item xs={3} >
-      <img className="tipo-atendimento" src="./src/assets/home/saude-mulher.svg"></img>
-    </Grid>
-    <Grid item xs={3}>
-      <img className="tipo-atendimento "src="./src/assets/home/nutricao-esportiva.svg"></img>
-    </Grid>
-    <Grid item xs={3}>
-      <img className="tipo-atendimento" src="./src/assets/home/longevidade.svg"></img>
-    </Grid>
-  </Grid>
+    <React.Fragment>
+      <Grid id="specialization-section" justifyContent="space-evenly" alignItems="stretch" container spacing={2} direction={"row"}>
+      {
+          Object.keys(specializations).map((key: string) => (
+            <GridIcon
+            imagePath={specializations[key].image}
+            specializationName={ key }
+            handleClick={handleSpecializationSelection}/>
+          ))
+        }
+      </Grid>
+      {selectedSpecialization && <SpecializationDetails text={selectedSpecialization} />}
+  </React.Fragment>
   )
 }
 
@@ -69,6 +127,7 @@ export default function Home() {
           <Typography variant="h4">Feedbacks</Typography>
           <Typography variant="h6" paddingInline={"15%"}>Fui muito bem atendido pela Dra. Sofia, que elaborou um plano alimentar personalizado e viável. Recomendo seu serviço pela atenção e profissionalismo exemplares..</Typography>
         </Box>
+
       </div>
       <Box id="footer">
           <Typography variant="h4">MY FUKING FOOTER</Typography>

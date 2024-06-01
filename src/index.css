@@ -13,26 +13,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
 }
 
 button {
@@ -46,6 +30,8 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
+
 button:hover {
   border-color: #646cff;
 }
@@ -126,7 +112,8 @@ button:focus-visible {
   border-radius: 15px;
 }
 
-#specialization-section {
+#specialization-section { 
+  background-position: center center;
   padding: 40px;
   padding-inline: 20px;
   background-image: url('./src/assets/home/transition1.svg') ;
@@ -168,4 +155,29 @@ button:focus-visible {
 #footer{
   overflow: visible;
   background-image: url('./src/assets/home/footer.svg');
+}
+
+#specialization-details {
+  background-color: #065750;
+  padding-bottom: 30px;
+}
+
+#specialization-description {
+  text-align: center;
+  border-radius: 20px;
+  padding: 20px;
+  margin: ;
+  min-width: 50%;
+  background-color: #FDF2EB;
+  color: #065750;
+}
+
+
+.grid-icon {
+  transition: transform 0.3s ease-in-out;
+}
+
+.grid-icon:hover {
+  transform: scale(1.1);
+  cursor: pointer; /* Add this line */
 }
