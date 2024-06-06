@@ -8,6 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import { Outlet } from "react-router-dom";
 import { CssBaseline } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { Container } from '@mui/material';
 
 
 const ButtonAppBar = () => {
@@ -45,6 +46,10 @@ const theme = createTheme({
     secondary: {
       main: '#fdf2eb',
     },
+    text: {
+      primary: '#fdf2eb',
+      secondary: '#065750'
+    },
   },
   shape: {
     borderRadius: 15,
@@ -56,7 +61,13 @@ export default function Root() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <ButtonAppBar />
-      <Outlet />
+      <Container
+        id='outlet-container'
+        style={{
+          marginTop: '140px'
+        }}>
+        <Outlet />
+      </Container>
     </ThemeProvider>
   );
 }
